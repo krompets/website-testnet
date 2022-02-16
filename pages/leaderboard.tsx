@@ -197,7 +197,8 @@ export default function Leaderboard({ loginContext }: Props) {
                     'font-favorit',
                     'bg-transparent',
                     'placeholder-black',
-                    'focus:outline-none'
+                    'focus:outline-none',
+                    'w-full'
                   )}
                   placeholder="Search"
                   onChange={e => {
