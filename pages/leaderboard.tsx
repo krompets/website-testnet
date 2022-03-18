@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Router from 'next/router'
 import clsx from 'clsx'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -31,6 +32,14 @@ type Props = {
 }
 
 const TOTAL_POINTS = 'Total Points'
+
+const encodeURIKeys = (x: Record<string, string>) =>
+  Object.entries(x).reduce(
+    (blob, [k, s]) => Object.assign({}, blob, { [k]: encodeURI(s) }),
+    {}
+  )
+const updateQuery = (query: Record<string, string>) =>
+  Router.push({ pathname: '/leaderboard', query })
 
 const FIELDS = {
   country: {
@@ -85,6 +94,21 @@ export default function Leaderboard({ loginContext }: Props) {
   const [$searching, $setSearching] = useState(false)
   const countryValue = $country?.value
   const eventTypeValue = $eventType?.value
+
+  const [$queryBlob, $setQueryBlob] = useState({
+    search: $search,
+    country: countryValue,
+    type: eventTypeValue,
+  })
+  useEffect(() => {
+    const query = {
+      search: $search,
+      country: $country?.value,
+      type: $eventType?.value,
+    }
+    $setQueryBlob(query)
+    updateQuery(encodeURIKeys(query))
+  }, [$search, $country?.value, $eventType?.value])
 
   useEffect(() => {
     const func = async () => {
@@ -219,7 +243,8 @@ export default function Leaderboard({ loginContext }: Props) {
                   )}
                   placeholder="Search"
                   onChange={e => {
-                    $setSearch(e.target.value)
+                    const search = e.target.value
+                    $setSearch(search)
                   }}
                   value={$search}
                 />
