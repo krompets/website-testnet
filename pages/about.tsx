@@ -63,10 +63,11 @@ const ArrowButton = ({ children, onClick }: ArrowButtonProps) => (
   </div>
 )
 type AboutProps = {
+  showNotification: boolean
   loginContext: LoginContext
 }
 
-export default function About({ loginContext }: AboutProps) {
+export default function About({ showNotification, loginContext }: AboutProps) {
   const { scrollLeft, scrollRight, $cards } = useResponsiveCards()
   const { checkLoggedIn, checkLoading } = loginContext
   const loaded = checkLoggedIn()
@@ -79,13 +80,14 @@ export default function About({ loginContext }: AboutProps) {
         <meta name="description" content="About" />
       </Head>
       <Navbar
+        showNotification={showNotification}
         fill="black"
-        className={clsx('bg-iflightorange', 'text-black')}
+        className={clsx('bg-ifbeige', 'text-black')}
         loginContext={loginContext}
       />
       <main
         className={clsx(
-          'bg-iflightorange',
+          'bg-ifbeige',
           'flex-1',
           'items-center',
           'flex',
