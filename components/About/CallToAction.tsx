@@ -3,6 +3,9 @@ import Link from 'next/link'
 
 import { Box } from 'components/OffsetBorder/Box'
 import { RawButton } from 'components/Button'
+import Chip from 'components/Chip'
+
+type CTAStatus = 'over' | 'active' | 'soon'
 
 type CTAProps = {
   title: string
@@ -13,7 +16,7 @@ type CTAProps = {
   points?: string[]
   ctaText?: string
   href?: string
-  comingSoon?: boolean
+  status?: CTAStatus
   submissionForm?: boolean
 }
 
@@ -25,9 +28,11 @@ export const CallToAction = ({
   earn = 1000,
   href,
   ctaText,
-  comingSoon = false,
+  status = 'active',
   submissionForm = false,
 }: CTAProps) => {
+  const comingSoon = status === 'soon'
+  const ended = status === 'over'
   const button = ctaText ? (
     <RawButton
       border="border"
@@ -41,12 +46,14 @@ export const CallToAction = ({
     <div className="mb-3">
       <Box behind="bg-ifpink">
         <div className="p-13">
-          {comingSoon && (
+          <Chip />
+          {ended || comingSoon ? (
             <div className="bg-iflightgray text-ifgray px-4 py-2 inline-block mt-2 text-xs md:text-md mb-2">
-              Coming soon!
+              {comingSoon ? 'Coming soon!' : 'Phase 1 Ended'}
             </div>
+          ) : (
+            <strong className="uppercase text-lg">{kind}</strong>
           )}
-          {!comingSoon && <strong className="uppercase text-lg">{kind}</strong>}
           <h3 className="text-left text-4xl mt-3 mb-4 font-extended">
             {title}
           </h3>
@@ -60,27 +67,25 @@ export const CallToAction = ({
               ))}
             </ul>
           )}
-          {earn > 0 && !comingSoon && (
+          {earn > 0 && !comingSoon && !ended && (
             <div className="bg-ifpink px-4 py-2 inline-block mt-2 text-xs md:text-md">
               Earn up to {earn.toLocaleString('en-US')} points a week
             </div>
           )}
           <div className="mb-8" />
-          {ctaText && href && button ? (
+          {!ended && ctaText && href && button ? (
             <Link href={href}>{button}</Link>
           ) : (
             button
           )}
-          {submissionForm && (
+          {!ended && submissionForm && (
             <Link href="https://forms.gle/yrAtzoyKTwLgLTRZA" passHref>
               <RawButton
                 border="border"
                 className="m-auto w-full mt-2 max-w-md mb-2 text-md p-2"
                 colorClassName="text-black bg-transparent hover:bg-black hover:text-white"
               >
-                <Link href={'https://forms.gle/yrAtzoyKTwLgLTRZA'}>
-                  Claim Points
-                </Link>
+                Claim Points
               </RawButton>
             </Link>
           )}

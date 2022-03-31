@@ -106,6 +106,7 @@ export const callsToAction = {
       ctaText: 'Submit an issue ',
       href: 'https://github.com/iron-fish/ironfish/issues',
       submissionForm: true,
+      status: 'over',
     },
     {
       title: 'Contributing to the Community',
@@ -131,6 +132,7 @@ export const callsToAction = {
         'Large = 750 points',
         'XLarge = 1000 points',
       ],
+      status: 'over',
     },
     {
       title: 'Being an Explorer',
@@ -139,6 +141,7 @@ export const callsToAction = {
       earn: 0,
       ctaText: 'Email us',
       href: 'mailto:testnet@ironfish.network',
+      status: 'over',
     },
   ],
   columnTwo: [
@@ -149,6 +152,7 @@ export const callsToAction = {
       points: ['1 block = 100 points'],
       ctaText: 'Get started with mining',
       href: 'https://ironfish.network/docs/onboarding/miner-iron-fish',
+      status: 'over',
     },
     {
       title: 'Promoting the Testnet',
@@ -174,6 +178,7 @@ export const callsToAction = {
         'Large = 750 points',
         'XLarge = 1000 points',
       ],
+      status: 'over',
     },
     {
       title: 'Submit a Pull Request',
@@ -188,6 +193,7 @@ export const callsToAction = {
       ctaText: 'Submit a PR',
       href: 'https://github.com/iron-fish/ironfish/pulls',
       submissionForm: true,
+      status: 'over',
     },
 
     {
@@ -198,6 +204,7 @@ export const callsToAction = {
       href: 'https://discord.gg/ironfish',
       earn: 0,
       kind: 'coming soon',
+      status: 'over',
     },
   ],
 }
