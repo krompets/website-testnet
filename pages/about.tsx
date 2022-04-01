@@ -113,9 +113,7 @@ export default function About({ showNotification, loginContext }: AboutProps) {
           buttonLink={!loaded ? '/signup' : ''}
         />
         <div className={clsx('mx-6', 'px-3', 'w-full', 'lg:w-2/3', 'mb-6')}>
-          <AboutHeader className="md:w-1/2">
-            Participation Categories
-          </AboutHeader>
+          <AboutHeader className="md:w-1/2">Phase 2 Categories</AboutHeader>
           <div className={clsx('flex', 'flex-col', 'md:flex-row', 'mb-16')}>
             <div
               className={clsx(
@@ -163,7 +161,7 @@ export default function About({ showNotification, loginContext }: AboutProps) {
           <div className={clsx('flex', 'flex-col', 'md:flex-row', 'mb-16')}>
             <div className={clsx('flex', 'flex-col', 'md:flex-row', 'w-full')}>
               {phases.map((p: Omit<Phase, 'index'>, index: number) => (
-                <PhaseComponent {...p} key={index} index={index} />
+                <PhaseComponent {...p} key={index} index={index + 1} />
               ))}
             </div>
           </div>

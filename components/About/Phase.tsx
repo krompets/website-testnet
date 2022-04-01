@@ -54,8 +54,15 @@ export const PhaseComponent = ({
         >
           Phase {index}
         </h4>
-        <p className={clsx('my-2', 'text-left', 'w-full')}>
-          Prize pool of{' '}
+        <p
+          className={clsx(
+            'my-2',
+            'text-left',
+            'w-full',
+            'font-bold',
+            'text-lg'
+          )}
+        >
           {pools.reduce((sum, { size }) => sum + size, 0).toLocaleString()}{' '}
           total coins
         </p>
