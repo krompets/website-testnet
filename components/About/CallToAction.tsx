@@ -6,7 +6,7 @@ import { Box } from 'components/OffsetBorder/Box'
 import { RawButton } from 'components/Button'
 import Chip from 'components/Chip'
 
-type CTAStatus = 'over' | 'active' | 'new' | 'soon'
+import { Status } from './types'
 
 type CTAProps = {
   title: string
@@ -17,7 +17,7 @@ type CTAProps = {
   points?: string[]
   ctaText?: string
   href?: string
-  status?: CTAStatus
+  status?: Status
   submissionForm?: boolean
   disabled?: boolean
 }
@@ -30,13 +30,13 @@ export const CallToAction = ({
   earn = 1000,
   href,
   ctaText,
-  status = 'active',
+  status = Status.Active,
   disabled = false,
   submissionForm = false,
 }: CTAProps) => {
-  const comingSoon = status === 'soon'
-  const ended = status === 'over'
-  const isNew = status === 'new'
+  const comingSoon = status === Status.Soon
+  const ended = status === Status.Over
+  const isNew = status === Status.New
   const button = ctaText ? (
     <RawButton
       border="border"

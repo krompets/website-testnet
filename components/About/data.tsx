@@ -1,4 +1,4 @@
-import Link from './Link'
+import { Status } from './types'
 
 export const cards = [
   {
@@ -103,7 +103,7 @@ export const callsToAction = {
       content:
         'Hosting a node using your graffiti automatically earns you points. You will only be rewarded points for hosting one node.',
       points: ['12 hours = 100 points'],
-      status: 'new',
+      status: Status.New,
       earn: 0,
       disabled: true,
     },
@@ -120,7 +120,7 @@ export const callsToAction = {
       ctaText: 'Submit a PR',
       // href: 'https://github.com/iron-fish/ironfish/pulls',
       submissionForm: false,
-      status: 'active',
+      status: Status.Active,
       disabled: true,
     },
   ],
@@ -130,13 +130,15 @@ export const callsToAction = {
       content: (
         <>
           Sending transactions automatically earns you points. Use the command:{' '}
-          <pre>send_transaction</pre>
+          <pre className="bg-iflightgray inline p-1 text-[0.8rem]">
+            send_transaction
+          </pre>
         </>
       ),
       points: ['1 block = 100 points'],
       ctaText: 'Get started with mining',
       // href: 'https://ironfish.network/docs/onboarding/miner-iron-fish',
-      status: 'new',
+      status: Status.New,
       earn: 0,
       disabled: true,
     },
@@ -148,9 +150,38 @@ export const callsToAction = {
       ctaText: 'Submit an issue ',
       // href: 'https://github.com/iron-fish/ironfish/issues',
       submissionForm: false,
-      status: 'active',
+      status: Status.Active,
       earn: 0,
       disabled: true,
     },
   ],
 }
+
+export const phases = [
+  {
+    status: Status.Over,
+    summary: `Ran from Dec 1, 2021 - March 11, 2022.`,
+    pools: [
+      {
+        size: 42e4,
+        categories: [
+          'Mining Blocks',
+          'Finding Bugs',
+          'Submitting Pull Requests',
+          'Community Contributions',
+        ],
+      },
+    ],
+  },
+  {
+    status: Status.Soon,
+    summary: 'Coming soon!',
+    pools: [
+      {
+        size: 21e4,
+        categories: ['Hosting a Node', 'Finding Bugs', 'Sending Transactions'],
+      },
+      { size: 105e3, categories: ['Submitting Pull Requests'] },
+    ],
+  },
+]

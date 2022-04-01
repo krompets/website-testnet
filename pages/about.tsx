@@ -16,7 +16,8 @@ import { AboutHeader } from 'components/About/Header'
 import { renderColumn } from 'components/About/CallToAction'
 import { renderGuidelineColumn } from 'components/About/Guidelines'
 import { NFTCard } from 'components/About/NFTCard'
-import { cards, guidelines, callsToAction } from 'components/About/data'
+import { PhaseComponent, Phase } from 'components/About/Phase'
+import { cards, guidelines, callsToAction, phases } from 'components/About/data'
 import { useResponsiveCards } from 'components/About/hooks'
 import Loader from 'components/Loader'
 
@@ -154,6 +155,16 @@ export default function About({ showNotification, loginContext }: AboutProps) {
               className={clsx('text-center', 'flex', 'md:hidden', 'mx-auto')}
             >
               <BasicLink href="#guidelines">View Testnet Guidelines</BasicLink>
+            </div>
+          </div>
+        </div>
+        <div className={clsx('mx-6', 'px-3', 'w-full', 'lg:w-2/3', 'mb-6')}>
+          <AboutHeader className="md:w-1/2">Phase Overview</AboutHeader>
+          <div className={clsx('flex', 'flex-col', 'md:flex-row', 'mb-16')}>
+            <div className={clsx('flex', 'flex-col', 'md:flex-row', 'w-full')}>
+              {phases.map((p: Omit<Phase, 'index'>, index: number) => (
+                <PhaseComponent {...p} key={index} index={index} />
+              ))}
             </div>
           </div>
           <div>
