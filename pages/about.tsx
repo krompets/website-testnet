@@ -19,6 +19,7 @@ import { NFTCard } from 'components/About/NFTCard'
 import { PhaseComponent, Phase } from 'components/About/Phase'
 import { cards, guidelines, callsToAction, phases } from 'components/About/data'
 import { useResponsiveCards } from 'components/About/hooks'
+
 import Loader from 'components/Loader'
 
 import { ArrowLeft, ArrowRight } from 'components/icons/Arrows'
