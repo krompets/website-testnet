@@ -70,18 +70,23 @@ export const PhaseComponent = ({
         <Link href={isComplete ? '#' : '/signup'} passHref>
           <Button
             border="rounded-3xl"
-            colorClassName={isComplete ? 'bg-[#d7eacf]' : 'bg-iflightgray'}
+            colorClassName={isComplete ? 'bg-[#d7eacf]' : 'bg-black'}
             className={clsx('w-full', 'mt-4')}
           >
             {isComplete ? (
               <>
                 <CheckIcon />
-                <span className={clsx('text-[#389810]', 'ml-1')}>
+                <span
+                  className={clsx(
+                    isComplete ? 'text-[#389810]' : 'text-white',
+                    'ml-1'
+                  )}
+                >
                   Phase Complete
                 </span>
               </>
             ) : (
-              'Sign Up Now'
+              <span className="text-white">Sign Up Now</span>
             )}
           </Button>
         </Link>
