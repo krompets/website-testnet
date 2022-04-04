@@ -49,41 +49,46 @@ export const PhaseComponent = ({
         >
           Phase {index}
         </h4>
-        <p
-          className={clsx(
-            'my-2',
-            'text-left',
-            'w-full',
-            'font-bold',
-            'text-lg'
-          )}
-        >
+        <p className={clsx('my-2', 'text-left', 'w-full', 'text-lg')}>
+          Prize pool of{' '}
           {pools.reduce((sum, { size }) => sum + size, 0).toLocaleString()}{' '}
           total coins
         </p>
         <p className={clsx('text-left', 'w-full')}>{summary}</p>
         <Link href={isComplete ? '#' : '/signup'} passHref>
-          <Button
-            border="rounded-3xl"
-            colorClassName={isComplete ? 'bg-[#d7eacf]' : 'bg-black'}
-            className={clsx('w-full', 'mt-4')}
+          <a
+            className={clsx(
+              'rounded-3xl',
+              isComplete ? 'bg-[#d7eacf]' : 'bg-black',
+              isComplete ? 'hover:bg-[#d7eacf]' : 'hover:bg-transparent',
+              isComplete ? 'cursor-not-allowed' : 'cursor-pointer',
+              isComplete ? 'text-[#389810]' : 'text-white',
+              isComplete ? 'hover:text-[#389810]' : 'hover:text-black',
+              isComplete ? 'border-[#389810]' : `border-2`,
+              'w-full',
+              'mt-4',
+              `flex`,
+              `justify-center`,
+              `items-center`,
+              `font-extended`,
+              `rounded-full`,
+              `whitespace-nowrap`,
+              `transition`,
+              `border-black`,
+              `p-4`,
+              `h-10`
+            )}
+            onClick={e => (isComplete ? e.preventDefault() : true)}
           >
             {isComplete ? (
               <>
                 <CheckIcon />
-                <span
-                  className={clsx(
-                    isComplete ? 'text-[#389810]' : 'text-white',
-                    'ml-1'
-                  )}
-                >
-                  Phase Complete
-                </span>
+                <span className={clsx('ml-1')}>Phase Complete</span>
               </>
             ) : (
-              <span className="text-white">Sign Up Now</span>
+              <>Sign Up Now</>
             )}
-          </Button>
+          </a>
         </Link>
         {pools.map(({ size, categories }: Pool) => (
           <div
