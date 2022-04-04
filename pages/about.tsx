@@ -166,28 +166,42 @@ export default function About({ showNotification, loginContext }: AboutProps) {
         </div>
         <div className={clsx('mx-6', 'px-3', 'w-full', 'lg:w-2/3', 'mb-6')}>
           <AboutHeader className="md:w-1/2">Phase Overview</AboutHeader>
-          <div className={clsx('flex', 'flex-col', 'md:flex-row', 'mb-16')}>
-            <div className={clsx('flex', 'flex-col', 'md:flex-row', 'w-full')}>
-              {phases.map((p: Omit<Phase, 'index'>, index: number) => (
-                <PhaseComponent {...p} key={index} index={index + 1} />
-              ))}
-            </div>
+          <div
+            className={clsx('flex', 'flex-col', 'mr-2', 'md:flex-row', 'mb-32')}
+          >
+            {phases.map((p: Omit<Phase, 'index'>, index: number) => (
+              <div
+                className={clsx(
+                  'flex',
+                  'flex-col',
+                  'w-full',
+                  'md:w-1/2',
+                  'md:mr-3',
+                  'md:ml-3'
+                )}
+                key={index}
+              >
+                <PhaseComponent {...p} index={index + 1} />
+              </div>
+            ))}
           </div>
-          <div>
-            <AboutHeader className={clsx('md:w-1/2', 'mt-32')}>
-              The Leaderboard
-            </AboutHeader>
-            <Para>
-              Earning points places you on the Leaderboard. See how you progress
-              each week in comparison to others.
-            </Para>
-            <div className={clsx('mt-8', 'mb-4', 'block', 'text-2xl')}>
-              <BasicLink href="/leaderboard">Show me the leaderboard</BasicLink>
-            </div>
-            <div className={clsx('flex', 'md:ml-24')}>
-              <Img src={leaderboardPic} />
-            </div>
+        </div>
+        <div className={clsx('mx-6', 'px-3', 'w-full', 'lg:w-2/3', 'mb-6')}>
+          <AboutHeader className={clsx('md:w-1/2', 'mt-32')}>
+            The Leaderboard
+          </AboutHeader>
+          <Para>
+            Earning points places you on the Leaderboard. See how you progress
+            each week in comparison to others.
+          </Para>
+          <div className={clsx('mt-8', 'mb-4', 'block', 'text-2xl')}>
+            <BasicLink href="/leaderboard">Show me the leaderboard</BasicLink>
           </div>
+          <div className={clsx('flex', 'md:ml-24')}>
+            <Img src={leaderboardPic} />
+          </div>
+        </div>
+        <div className={clsx('mx-6', 'px-3', 'w-full', 'lg:w-2/3', 'mb-6')}>
           <AboutHeader
             className={clsx(
               'text-left',

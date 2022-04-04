@@ -27,10 +27,7 @@ export const PhaseComponent = ({
 }: Phase) => {
   const isComplete = status === Status.Over
   return (
-    <OffsetBox
-      behind="bg-ifpink"
-      className={clsx('mt-3', 'md:mr-6', 'md:w-1/2', 'lg:w-auto')}
-    >
+    <OffsetBox behind="bg-ifpink" className={clsx('mt-3', 'md:mr-6', 'w-full')}>
       <div
         className={clsx(
           'h-[34rem]',
