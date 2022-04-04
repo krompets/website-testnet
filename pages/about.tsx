@@ -114,8 +114,15 @@ export default function About({ showNotification, loginContext }: AboutProps) {
           buttonLink={!loaded ? '/signup' : ''}
         />
         <div className={clsx('mx-6', 'px-3', 'w-full', 'lg:w-2/3', 'mb-6')}>
-          <AboutHeader className="md:w-1/2">Phase 2 Categories</AboutHeader>
-          <div className={clsx('flex', 'flex-col', 'md:flex-row', 'mb-16')}>
+          <AboutHeader className="md:w-1/2">
+            Phase 2
+            <span className="ml-2 md:hidden" />
+            <br className="hidden md:inline" />
+            <span className="hidden md:inline">Participation</span>
+            <br className="hidden md:inline" />
+            Categories
+          </AboutHeader>
+          <div className={clsx('flex', 'flex-col', 'md:flex-row', 'mb-32')}>
             <div
               className={clsx(
                 'flex',
@@ -167,7 +174,7 @@ export default function About({ showNotification, loginContext }: AboutProps) {
             </div>
           </div>
           <div>
-            <AboutHeader className={clsx('md:w-1/2', 'mt-24')}>
+            <AboutHeader className={clsx('md:w-1/2', 'mt-32')}>
               The Leaderboard
             </AboutHeader>
             <Para>
@@ -196,15 +203,18 @@ export default function About({ showNotification, loginContext }: AboutProps) {
           <Para
             className={clsx(
               'text-left',
-              'md:text-center',
               'm-auto',
               'mx-1.5',
-              'mb-6'
+              'mb-6',
+              'md:text-center',
+              'md:w-full'
             )}
           >
-            At the end of the testnet if you’re the leader in any of the
-            categories mentioned above you might be eligible to receive an Iron
-            Fish NFT. Filter the leaderboard to see category leaders.
+            <p className="md:max-w-[50rem] m-auto">
+              At the end of the testnet if you’re the leader in any of the
+              categories mentioned above you might be eligible to receive an
+              Iron Fish NFT. Filter the leaderboard to see category leaders.
+            </p>
           </Para>
         </div>
         <div
@@ -228,7 +238,7 @@ export default function About({ showNotification, loginContext }: AboutProps) {
           buttonText="Get Incentivized"
           goTo="/signup"
         />
-        <div id="guidelines" className={clsx('mt-24', 'mx-3', 'lg:w-2/3')}>
+        <div id="guidelines" className={clsx('mt-32', 'mx-3', 'lg:w-2/3')}>
           <AboutHeader className={clsx('text-left', 'text-4xl', 'w-1/2')}>
             Testnet Guidelines
           </AboutHeader>
@@ -251,7 +261,7 @@ export default function About({ showNotification, loginContext }: AboutProps) {
                 'w-full',
                 'md:w-1/2',
                 'md:ml-1',
-                'md:-mt-32'
+                'md:-mt-24'
               )}
             >
               {guidelines.columnTwo.map(renderGuidelineColumn)}
